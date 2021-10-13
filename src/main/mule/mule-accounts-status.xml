@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0f64da66-bb95-4a31-8b70-c1738415eb1b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule-accounts-statusFlow" doc:id="e00c544f-6b2e-411b-aafb-fc3a933c8f21" >
+		<http:listener doc:name="Listener" doc:id="9b756363-4ca8-4916-b9a7-a1dfc762136d" config-ref="HTTP_Listener_config" path="/*"/>
+		<set-variable value="123" doc:name="Set Variable" doc:id="e5660543-ee4b-4c31-8188-e16c19f2608b" variableName="id"/>
+		<ee:transform doc:name="Transform Message" doc:id="03b8bedd-fb1f-4949-a6ac-936c006ab031" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.id]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -38,6 +38,15 @@ output application/java
 			</route>
 			<route >
 				<logger level="INFO" doc:name="Logger" doc:id="194044ca-5a6b-4a45-9d79-1c95ef2c246a" />
+				<ee:transform doc:name="Transform Message" doc:id="d6a1bbf9-7aab-4886-b8e9-763f2b097fdc" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
 			</route>
 		</scatter-gather>
 	</flow>

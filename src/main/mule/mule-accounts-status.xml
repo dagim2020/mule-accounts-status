@@ -26,6 +26,15 @@ vars.id]]></ee:set-payload>
 		<scatter-gather doc:name="Scatter-Gather" doc:id="14ff2bf5-9cb4-4d00-a6cf-9eea40b78201" >
 			<route >
 				<logger level="INFO" doc:name="Logger" doc:id="046bfaf4-d9b4-4672-afcb-d74977b74174" />
+				<ee:transform doc:name="Transform Message" doc:id="9cf9693d-c3d5-4cbc-84f1-a1c1bd41ef21" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
 			</route>
 			<route >
 				<logger level="INFO" doc:name="Logger" doc:id="194044ca-5a6b-4a45-9d79-1c95ef2c246a" />

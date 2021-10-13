@@ -23,5 +23,13 @@ vars.id]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<http:request method="OPTIONS" doc:name="Request" doc:id="41d2a8bb-8534-411e-9e45-8ef3c9a97458" config-ref="HTTP_Request_configuration" path="/*"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="14ff2bf5-9cb4-4d00-a6cf-9eea40b78201" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="046bfaf4-d9b4-4672-afcb-d74977b74174" />
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="194044ca-5a6b-4a45-9d79-1c95ef2c246a" />
+			</route>
+		</scatter-gather>
 	</flow>
 </mule>

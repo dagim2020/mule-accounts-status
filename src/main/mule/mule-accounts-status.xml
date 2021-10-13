@@ -8,6 +8,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0f64da66-bb95-4a31-8b70-c1738415eb1b" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="f4e50860-79da-4ffd-a586-77043354f22b" >
+		<http:request-connection host="localhost" port="8082" />
+	</http:request-config>
 	<flow name="mule-accounts-statusFlow" doc:id="e00c544f-6b2e-411b-aafb-fc3a933c8f21" >
 		<http:listener doc:name="Listener" doc:id="9b756363-4ca8-4916-b9a7-a1dfc762136d" config-ref="HTTP_Listener_config" path="/*"/>
 		<set-variable value="123" doc:name="Set Variable" doc:id="e5660543-ee4b-4c31-8188-e16c19f2608b" variableName="id"/>
@@ -19,5 +22,6 @@ output application/json
 vars.id]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<http:request method="OPTIONS" doc:name="Request" doc:id="41d2a8bb-8534-411e-9e45-8ef3c9a97458" config-ref="HTTP_Request_configuration" path="/*"/>
 	</flow>
 </mule>
